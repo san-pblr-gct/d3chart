@@ -6,4 +6,4 @@ before_install:
   - docker build -t parthi22/d3chart -f Dockerfile.dev .
 
 script:
-  - docker run parthi22/d3chart npm run test -- --coverage
+  - docker run -e CI=true parthi22/d3chart npm run test -- --coverage
