@@ -19,3 +19,16 @@ after_success:
   - docker push parthi22/d3chart-api
   - docker push parthi22/d3chart-nginx
   - docker push parthi22/d3chart-client
+
+deploy:
+  provider: elasticbeanstalk
+  region: ap-south-1
+  app: d3chart
+  env: D3chart-env
+  bucket_name: elasticbeanstalk-ap-south-1-764990977356
+  bucket_path: d3chart
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
