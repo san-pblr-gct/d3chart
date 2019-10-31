@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import axios from "axios";
 
 class Todo extends Component {
-  componentDidMount() {}
+  componentDidMount() {
+    this.fetchTodo();
+  }
 
-  async fetchTodos() {
-    const todos = await axios.get("api/todos/all");
-    console.log(todos);
+  async fetchTodo() {
+    const todo = await axios.get("/api/todos/all");
+    console.log(todo);
   }
 
   render() {
@@ -14,4 +16,4 @@ class Todo extends Component {
   }
 }
 
-export default Todo
+export default Todo;

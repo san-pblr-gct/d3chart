@@ -12,13 +12,10 @@ app.get("/", (req, res) => {
 });
 
 app.get("/todos/all", async (req, res) => {
-  let todos = [];
-  try {
-    todos = await axios.get("https://jsonplaceholder.typicode.com/todos");
-  } catch (error) {
-    console.log(error);
-  }
-  return todos;
+  const todos = await axios.get("https://jsonplaceholder.typicode.com/todos/1");
+  console.log(todos);
+  console.log(todos.data);
+  res.send(todos.data);
 });
 
 app.listen(5000, err => {
