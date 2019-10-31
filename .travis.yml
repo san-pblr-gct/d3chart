@@ -15,6 +15,7 @@ after_success:
   # Log in to docker cli
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Push to docker hub
-  - docker push parthi22/d3chart-client
+  
   - docker push parthi22/d3chart-api
   - docker push parthi22/d3chart-nginx
+  - docker push parthi22/d3chart-client
