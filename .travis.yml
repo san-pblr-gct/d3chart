@@ -3,10 +3,10 @@ services:
   - docker
 
 before_install:
-  - docker build -t parthi22/d3chart -f ./client/Dockerfile.dev ./client
+  - docker build -t parthi22/d3chart-client -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true parthi22/d3chart npm run test -- --coverage
+  - docker run -e CI=true parthi22/d3chart-client npm run test -- --coverage
 
 after_success:
   - docker build -t parthi22/d3chart-client ./client
