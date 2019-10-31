@@ -7,8 +7,6 @@ services:
     volumes:
       - /app/node_modules
       - ./server:/app
-    expose:
-      - '5000'
   client:
     build:
       dockerfile: Dockerfile.dev
@@ -16,14 +14,9 @@ services:
     volumes:
       - /app/node_modules
       - ./client:/app
-    expose:
-      - '3000'
   
   nginx:
     restart: always
-    depends_on:
-      - 'api'
-      - 'client'
     build:
       dockerfile: Dockerfile.dev
       context: ./nginx
