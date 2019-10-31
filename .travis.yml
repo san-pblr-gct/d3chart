@@ -3,7 +3,18 @@ services:
   - docker
 
 before_install:
-  - docker build -t parthi22/d3chart -f Dockerfile.dev .
+  - docker build -t parthi22/d3chart -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run -e CI=true parthi22/d3chart npm run test -- --coverage
+
+after_success:
+  - docker build -t parthi22/d3chart-client ./client
+  - docker build -t parthi22/d3chart-api ./server
+  - docker build -t parthi22/d3chart-nginx ./nginx
+  # Log in to docker cli
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Push to docker hub
+  - docker push parthi22/d3chart-client
+  - docker push parthi22/d3chart-api
+  - docker push parthi22/d3chart-nginx
