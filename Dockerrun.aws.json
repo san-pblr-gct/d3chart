@@ -5,19 +5,22 @@
             "name": "client",
             "image": "parthi22/d3chart-client",
             "hostname": "client",
-            "essential": false
+            "essential": false,
+            "memory": 128
         },
         {
             "name": "server",
             "image": "parthi22/d3chart-api",
             "hostname": "api",
-            "essential": false
+            "essential": false,
+            "memory": 128
         },
         {
             "name": "nginx",
             "image": "parthi22/d3chart-nginx",
             "hostname": "nginx",
             "essential": true,
+            "memory": 128,
             "portMappings": [
                 {
                     "hostPort": 80,
