@@ -7,7 +7,7 @@ services:
       context: ./nginx
     ports:
       - '3050:80'
-      
+
   api:
     build:
       dockerfile: Dockerfile.dev
@@ -22,14 +22,3 @@ services:
     volumes:
       - /app/node_modules
       - ./client:/app
-  
-  
-
-  # tests:
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile.dev
-  #   volumes:
-  #     - /app/node_modules
-  #     - .:/app
-  #   command: ["npm", "run", "test"]
